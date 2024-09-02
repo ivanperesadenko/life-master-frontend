@@ -1,0 +1,39 @@
+<nz-layout class="outer-layout">
+	<nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+		<!--  TODO: Need to replace to real one  -->
+		<div class="logo"></div>
+
+		<ul nz-menu nzTheme="dark" nzMode="inline">
+			<li
+				nz-menu-item
+				*ngFor="let page of pagesList"
+				[routerLink]="page.path"
+				[nzMatchRouter]="true"
+			>
+				<span nz-icon [nzType]="page.iconName" [nzTheme]="page.iconTheme"></span>
+				<span>{{ page.text }}</span>
+			</li>
+		</ul>
+	</nz-sider>
+
+	<nz-layout>
+		<nz-header>
+			<span class="trigger" nz-icon [nzType]="'menu'" (click)="isCollapsed = !isCollapsed"></span>
+
+			<lm-header></lm-header>
+		</nz-header>
+
+		<nz-content>
+			<!--      <nz-breadcrumb>-->
+			<!--        <nz-breadcrumb-item>User</nz-breadcrumb-item>-->
+			<!--        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>-->
+			<!--      </nz-breadcrumb>-->
+
+			<ng-content></ng-content>
+		</nz-content>
+
+		<nz-footer>
+			<i>Move fast, break things</i>
+		</nz-footer>
+	</nz-layout>
+</nz-layout>
